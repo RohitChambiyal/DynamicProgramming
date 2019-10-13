@@ -1,0 +1,31 @@
+import java.util.Scanner;
+//top down dp
+public class fibbonacciDp {
+    
+    static int[] m = new int[9999];                
+    public static int findfibbo(int element){
+    
+        if(m[element]==-1){
+        if(element==0){
+            return m[element]=0;
+        }
+        else if(element==1){
+            return m[element]=1;
+        }
+        return m[element] = (findfibbo(element-1)+findfibbo(element-2));
+    }
+    return m[element];
+
+}
+    public static void main(String[] args){
+        Scanner s = new Scanner(System.in);
+         
+        System.out.println("Enter the position you want to search in fibbonacci");
+        int value = s.nextInt();
+        for(int i=0;i<value;i++){
+            m[i]=-1;
+        }
+
+        System.out.println("Resultant fibbonacci value at "+value +" position is : "+ findfibbo(value-1));
+    }
+}
