@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class fibbonacciDpBottomUp {
+    static int m[] = new int[9999];
+    public static void main(String[] args){
+        Scanner s = new Scanner(System.in);
+        m[0]=0;
+        m[1]=1;
+        int again = 1;
+        int known = 0;
+        int j=2;
+        while(again==1){
+        System.out.println("Enter the position you want to know");
+        int len = s.nextInt();
+
+        for(int i=known;i<len;i++){
+            m[i]=-1;
+        }
+        for(j=known;j<len;j++){
+            m[j] = m[j-1]+m[j-2];
+        }
+        known = j;
+        System.out.println("Searched Position in fibonacci is "+ m[len]);
+        System.out.println("Enter 1 to search another number in fibbonacci");
+        again = s.nextInt();
+    }
+
+    }
+}
