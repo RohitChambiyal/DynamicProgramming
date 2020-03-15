@@ -1,0 +1,31 @@
+static int bSearch(int table[],int start, int end, int check){
+        while(end-start>1){
+            int mid = start + (end-start)/2;
+            if(table[mid]>=check)
+                end = mid;
+            else
+                start = mid;
+        }
+        return end;
+
+    }
+    // Complete the longestIncreasingSubsequence function below.
+    static int longestIncreasingSubsequence(int[] arr) {
+        int n = arr.length;
+        int table[] = new int[n];
+        table[0] = arr[0];  // first element same;
+        int length= 1;
+        for(int i=1;i<n;i++){
+            if(table[0]>arr[i]){
+                table[0]= arr[i];
+            }
+            else if(table[length-1]<arr[i]){
+                table[length++] = arr[i];
+            }
+            else{
+                table[(bSearch(table,-1,length-1,arr[i]))] = arr[i];
+            }
+        }
+        return length;
+
+    }
